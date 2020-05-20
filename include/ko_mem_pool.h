@@ -8,7 +8,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 template <typename T, size_t MAX_POOL_CNT>
 class KoMemPool {
-	public:
+    public:
         ~KoMemPool() {
             ClearAllocMem();
         }
@@ -17,7 +17,7 @@ class KoMemPool {
             return mem_pool_.size();
         }
         //---------------------
-		bool InitMemPool(){
+        bool InitMemPool(){
             for(auto i=0; i < MAX_POOL_CNT ; i++){
                 T* data = new (std::nothrow) T();
                 if(data ==nullptr) {
@@ -28,7 +28,7 @@ class KoMemPool {
             return true;
         }
         //---------------------
-		T* GetFromMemPool() {
+        T* GetFromMemPool() {
             if(!mem_pool_.empty()){
                 T* data = mem_pool_.front();
                 mem_pool_.pop_front();
@@ -48,7 +48,7 @@ class KoMemPool {
             }
         }
         //---------------------
-		void PutBackMemPool(T* data) {
+        void PutBackMemPool(T* data) {
             mem_pool_.push_back(data);
         }
     protected:
