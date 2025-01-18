@@ -2,6 +2,7 @@
 #ifndef KO_MEW_POOL_H
 #define KO_MEW_POOL_H
 
+#include <cstddef>
 #include <cstdlib>
 #include <deque> 
 
@@ -18,7 +19,7 @@ class KoMemPool {
         }
         //---------------------
         bool InitMemPool(){
-            for(auto i=0; i < MAX_POOL_CNT ; i++){
+            for(size_t i=0; i < MAX_POOL_CNT ; i++){
                 T* data = new (std::nothrow) T();
                 if(data ==nullptr) {
                     return false;
